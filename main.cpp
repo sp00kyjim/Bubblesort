@@ -12,14 +12,14 @@ int main()
     }
 
     while (check) {
-    for(i = 0;i<N;i++)
+    for(i = 0;i<(sizeof(list)/ sizeof(*list));i++)
         {
+            check = false;              //check ist erstmahl immer Falsch, ausser wenn später die if pruefung richtig (--> etwas noch nicht sortiert ist)
         if (list[i]>list[i+1]){
-            puffer = list[i];
-            list[i]=list[i+1];
-            list[i+1]=puffer;
-            }else{
-                check = false;
+            check = true;
+            puffer = list[i+1];         //der Tausch zwischen i und +1 war verkehrt
+            list[i+1]=list[i];
+            list[i]=puffer;
             }
         }
 
