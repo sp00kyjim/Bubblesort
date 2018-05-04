@@ -1,36 +1,31 @@
+#include<stdio.h>
 #include <iostream>
-const int TAGE = 7;
+#include <stdlib.h>
+int main()
+{
+    const int N = 10;
+    bool check = true;
+    int puffer, list[N], i;
 
-
-int main() {
-
-
-
-    float sonne[TAGE];
-
-
-    for(int z = 0; z< sizeof(sonne)/ sizeof(sonne[0]); z++){        //defining random numbers for sun
-        sonne[z] = rand();
-
+    for(int i=0; i<(sizeof(list)/ sizeof(*list));i++){
+     list[i]=std::rand()%10;
     }
 
-    float summe = 0,durchscnhitt = 0;
-
-    for(int i = 0; i< sizeof(sonne)/ sizeof(sonne[0]); i++){
-        std::cout << "Sonne am Tag " <<i+1<<" "<< sonne[i] << std::endl;
-        summe = summe + sonne[i];
+    while (check) {
+    for(i = 0;i<N;i++)
+        {
+        if (list[i]>list[i+1]){
+            puffer = list[i];
+            list[i]=list[i+1];
+            list[i+1]=puffer;
+            }else{
+                check = false;
+            }
+        }
 
     }
-    durchscnhitt = summe / (sizeof(sonne)/ sizeof(sonne[0]));
-
-
-    std::cout << "Summe an Sonne : " << summe <<std::endl << "Durschnitt: " << durchscnhitt << std::endl;
-
-
-
-
-
-
-
+    for(int i=0; i<(sizeof(list)/ sizeof(*list));i++){
+        std::cout <<list[i]<<std::endl;
+    }
     return 0;
 }
